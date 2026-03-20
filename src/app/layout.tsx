@@ -3,7 +3,7 @@ import './globals.css';
 import { FirebaseClientProvider } from '@/firebase';
 
 export const metadata: Metadata = {
-  title: 'NEU Access',
+  title: 'NEU LIBRARY VISITOR LOG',
   description: 'New Era University Access Portal',
 };
 
