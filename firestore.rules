@@ -1,0 +1,57 @@
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      // Check if the user has an entry in the adminUsers collection
+      // We use a dedicated collection for admin gatekeeping to keep rules efficient
+      return isSignedIn() && exists(/databases/$(database)/documents/adminUsers/$(request.auth.uid));
+    }
+
+    function isNotBlocked() {
+      let profilePath = /databases/$(database)/documents/userProfiles/$(request.auth.uid);
+      return !exists(profilePath) || !get(profilePath).data.isBlocked;
+    }
+
+    match /userProfiles/{userId} {
+      // Users can see their own profile, Admins can see all
+      allow get: if isSignedIn() && (request.auth.uid == userId || isAdmin());
+      // Only admins can list all profiles
+      allow list: if isAdmin();
+      // Users can create their own profile
+      allow create: if isSignedIn() && request.auth.uid == userId;
+      // Users can update their own profile, Admins can update any (e.g., for blocking)
+      allow update: if (isSignedIn() && request.auth.uid == userId) || isAdmin();
+    }
+
+    match /adminUsers/{userId} {
+      // Users can check their own admin status, Admins can check any
+      allow get: if isSignedIn() && (request.auth.uid == userId || isAdmin());
+      // Only admins can list admin records
+      allow list: if isAdmin();
+      // Allow a user to create their own admin record if they are logging in as an admin
+      // This supports the prototype self-promotion flow
+      allow create: if isSignedIn() && request.auth.uid == userId;
+      // Only existing admins can update/delete admin records
+      allow update, delete: if isAdmin();
+    }
+
+    match /visits/{visitId} {
+      // Visitors can check in if they are not blocked
+      allow create: if isSignedIn() && request.resource.data.visitorID == request.auth.uid && isNotBlocked();
+      // Users can see their own visits, Admins can see all
+      allow get: if isSignedIn() && (resource.data.visitorID == request.auth.uid || isAdmin());
+      // Only admins can list and analyze visits
+      allow list: if isAdmin();
+    }
+
+    match /{path=**} {
+      allow read, write: if false;
+    }
+  }
+}

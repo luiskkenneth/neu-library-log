@@ -1,0 +1,16 @@
+{
+  "placeholderImages": [
+    {
+      "id": "neu-logo",
+      "description": "New Era University Official Logo",
+      "imageUrl": "https://scontent.fmnl22-1.fna.fbcdn.net/v/t39.30808-6/587748546_122156030186743934_2851142283168601511_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=1d70fc&_nc_eui2=AeFT0Uwl_K1d5YnMEtBzrVMKaPDH8DoECgpo8MfwOgQKCp0DAx0MZ5x6WFPYkTFRvXWRPe6Dv0Qtn7C6cwcLfYSE&_nc_ohc=_lRtZ7q0vb0Q7kNvwG7D1rY&_nc_oc=AdqX3Qwpj6mdk9b8SzD1jww40d-9d-uZs34XNEhvhYSL1sIe-asUo1dyCT_cDcRogpU&_nc_zt=23&_nc_ht=scontent.fmnl22-1.fna&_nc_gid=YchpurlFmS88O4LudyY8tA&_nc_ss=7a30f&oh=00_AfxvWnwDc0rlYTSWoJ5T_lIk0_OKQjNnRchM2DLhwb8yuA&oe=69C2B135",
+      "imageHint": "university logo"
+    },
+    {
+      "id": "landing-bg",
+      "description": "New Era University Campus Background",
+      "imageUrl": "https://scontent.fmnl22-1.fna.fbcdn.net/v/t39.30808-6/477579626_122108352272743934_80451274266931311_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=2a1932&_nc_eui2=AeEaEHJBRFo4sJZ4hgfmSrUpmfYDj1U4U5CZ9gOPVThTkDpFSSH0A5OANg7olJdZVGBwbsZIHOJ9cPMujAY4UfF1&_nc_ohc=apGLE2KMe60Q7kNvwE_z1OS&_nc_oc=AdocyGn8qwZBeBHWdGnGh9_qeXNU1k4ZwN5wqluprGNnRT62on2XVIr2WnjVoSo0Pwg&_nc_zt=23&_nc_ht=scontent.fmnl22-1.fna&_nc_gid=7oSMiCkfEVm8jnQCSNSzNg&_nc_ss=7a30f&oh=00_Afyc5als5rbPbDlVSCHIICf3O9fv2-Z3Aignjvs60YSdjw&oe=69C2A67C",
+      "imageHint": "university campus"
+    }
+  ]
+}

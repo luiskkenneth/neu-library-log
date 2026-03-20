@@ -1,0 +1,112 @@
+
+{
+  "entities": {
+    "UserProfile": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "UserProfile",
+      "type": "object",
+      "description": "Represents a user's profile within the NEU Access system.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier matching Firebase Auth UID."
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "photoURL": {
+          "type": "string",
+          "description": "The URL of the user's profile picture."
+        },
+        "role": {
+          "type": "string",
+          "enum": ["Visitor", "Admin"]
+        },
+        "isBlocked": {
+          "type": "boolean",
+          "description": "Whether the user is restricted from entering the library."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["id", "email", "role", "createdAt"]
+    },
+    "Visit": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Visit",
+      "type": "object",
+      "description": "Represents a single visitor entry record.",
+      "properties": {
+        "visitorID": {
+          "type": "string",
+          "description": "The UID of the visitor."
+        },
+        "visitorName": {
+          "type": "string",
+          "description": "The display name of the visitor."
+        },
+        "visitorEmail": {
+          "type": "string",
+          "format": "email",
+          "description": "The email of the visitor."
+        },
+        "department": {
+          "type": "string",
+          "description": "The department or college the visitor belongs to."
+        },
+        "purpose": {
+          "type": "string",
+          "description": "The stated purpose of the visit.",
+          "enum": [
+            "Borrow Books",
+            "Student lounge",
+            "Photocopying / Printing Services",
+            "Use of computers",
+            "Discussion Area",
+            "NEU Museum",
+            "Assignments / Activities",
+            "Study / Reading",
+            "Others"
+          ]
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the visit was logged."
+        }
+      },
+      "required": ["visitorID", "department", "purpose", "timestamp"]
+    }
+  },
+  "auth": {
+    "providers": [
+      "google.com"
+    ]
+  },
+  "firestore": {
+    "/userProfiles/{userId}": {
+      "schema": {
+        "$ref": "#/backend/entities/UserProfile"
+      },
+      "description": "Stores individual user profiles."
+    },
+    "/adminUsers/{userId}": {
+      "schema": {
+        "$ref": "#/backend/entities/UserProfile"
+      },
+      "description": "Identifies users with admin privileges."
+    },
+    "/visits/{visitId}": {
+      "schema": {
+        "$ref": "#/backend/entities/Visit"
+      },
+      "description": "Collection of visitor check-in records."
+    }
+  }
+}
