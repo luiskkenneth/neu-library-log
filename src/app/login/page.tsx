@@ -50,7 +50,8 @@ const GoogleLogo = () => (
 
 const AUTHORIZED_ADMIN_EMAILS = [
   'jcesperanza@neu.edu.ph',
-  'luiskenneth.fajardo@neu.edu.ph'
+  'luiskenneth.fajardo@neu.edu.ph',
+  'deighquenxiel.tolentino@neu.edu.ph'
 ];
 
 export default function LoginPage() {
