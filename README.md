@@ -50,6 +50,9 @@ The **NEU Library Visitor Log System** is a modern web application designed to r
 
 ---
 
-**Developed by:** [Your Name]  
-**Institution:** New Era University  
+
+**Developed by:** FAJARDO, Luis Kenneth D. 
+
+**School:** New Era University 
+
 **Status:** Proposal
